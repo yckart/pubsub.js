@@ -1,0 +1,27 @@
+{
+    "name": "pubsub",
+    "title": "jQuery Publish/Subscribe",
+    "description": "Another simple way to publish and subscribe.",
+    "keywords": [
+        "pubsub",
+        "publish",
+        "subscribe",
+        "yckart"
+    ],
+    "version": "0.0.1",
+    "author": {
+        "name": "Yannick Albert",
+        "email": "mail@yckart.com",
+        "url": "https://github.com/yckart"
+    },
+    "licenses": [{
+        "type": "MIT",
+        "url": "http://yckart.com/mit/"
+    }],
+    "homepage": "https://github.com/yckart/pubsub.js",
+    "docs": "https://github.com/yckart/pubsub.js",
+    "bugs": "https://github.com/yckart/pubsub.js/issues",
+    "dependencies": {
+        "jquery": ">=1.6.4"
+    }
+}
