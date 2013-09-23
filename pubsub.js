@@ -1,15 +1,17 @@
 /*!
- * pubsub.js 0.0.1 - https://github.com/yckart/pubsub.js
+ * pubsub.js 0.0.2 - https://github.com/yckart/pubsub.js
  * Another simple way to publish and subscribe.
  *
  * Copyright (c) 2013 Yannick Albert (http://yckart.com)
  * Licensed under the MIT license (http://www.opensource.org/licenses/mit-license.php).
- * 2013/03/18
+ * 2013/09/23
  **/
 (function ($) {
 
     // subscribes hash
     var cache = {};
+
+
 
     /*
      * Publish data to a specified channel
@@ -20,8 +22,12 @@
      */
     this.publish = function (topic, data) {
         var subs = cache[topic] || [];
-        for (var i = 0; subs[i]; i++) subs[i].apply(this, String(data).split(",") || []);
+        for (var i = 0; subs[i]; i++) {
+            subs[i].apply(this, (data+'').split(',') || []);
+        }
     };
+
+
 
     /*
      * Subscribe a handler to a specified channel
@@ -34,6 +40,8 @@
         return [topic, handler];
     };
 
+
+
     /*
      * Unsubscribe a handler from a specified channel
      * @param {String|Array} topic The array that is returned from the `subscribe` function or the topic String
@@ -41,14 +49,17 @@
      * @example unsubscribe(handle);
      */
     this.unsubscribe = function (topic) {
-        var subs = cache[topic[0]] || cache[topic] || [],
-            i = subs.length;
-        while (i--) if( (cache[topic[0]] && subs[i] === topic[1]) || cache[topic] ) subs.splice(i, 1);
+        var subs = cache[topic[0]] || cache[topic] || [];
+        for (var i = 0; subs[i]; i++) {
+            if( (cache[topic[0]] && subs[i] === topic[1]) || cache[topic] ) subs.splice(i, 1);
+        }
     };
+
+
 
     if( !$ ) return;
     $.publish = publish;
     $.subscribe = subscribe;
     $.unsubscribe = unsubscribe;
 
-}(window.jQuery || window.Zepto));
+}(this.jQuery || this.Zepto));

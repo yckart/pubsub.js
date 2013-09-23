@@ -1,14 +1,14 @@
 ```javascript
-subscribe("some/topic", function (foo, bar) {
-    console.log(foo); // "Foo"
+subscribe('some/topic', function (foo, bar) {
+    console.log(foo); // 'Foo'
 });
 
-subscribe("some/topic", function (foo, bar) {
-    console.log(bar); // "Bar"
+subscribe('some/topic', function (foo, bar) {
+    console.log(bar); // 'Bar'
 });
 
-publish("some/topic", ["Foo", "Bar"]);
-unsubscribe("some/topic");
+publish('some/topic', ['Foo', 'Bar']);
+unsubscribe('some/topic');
 ```
 
 
